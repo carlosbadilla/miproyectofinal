@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <title>INICIO</title>
+</head>
+<body>
+    <!-- CABEZERA -->
+    <header class="cabezera">
+        <div class="contenedor-logo">
+            <a href="/" class="logo">Bienvenidos</a>
+            <div class="titulo">
+                <h1>Sistema para chatear con diferentes usuarios</h1>
+                    <!--BOTON PARA LOGIN-->
+                <a align="center" type="submit" href="/login" class="btn boton_agregar">Iniciar Sesion</a>
+
+                <!--BOTON PARA Registro-->
+                <a align="center" type="submit" href="/registro" class="btn boton_agregar">Registrarse</a>
+            </div>
+        </div>
+    </header>
+
+    
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="contenedor-footer">
+          <small>&copy; 2024 <b>Proyecto Final</b>
+        </div>
+      </footer>
+</body>
+
+<style>
+    /*header*/
+    .container {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .cabezera {
+        z-index: 100;
+        background: #333;
+        color: white;
+        padding: 1.5rem;
+        left: 0;
+        top: 0;
+        right: 0;
+    }
+
+    .cabezera a {
+        color: white;
+        text-decoration: none;
+    }
+
+    /*Logo*/
+    .logo {
+        letter-spacing: 15px;
+        font-size: 1.3em;
+        margin-left: 50px;
+    }
+
+    .contenedor-logo {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .titulo {
+        margin: 0;
+        padding: 0;
+        width: 1000px;
+    }
+
+    /*Ingreso datos*/
+    .Ingreso_datos_usuario{
+        padding-top: 50px;
+        padding-bottom: 50px;
+        padding-left: 50px;
+        padding-right: 50px;
+        text-align: center;
+        margin: 0px 150px;
+        justify-content: center;
+    }
+
+    .form-control{
+        margin-bottom: 20px;
+    }
+
+    .boton_agregar{
+        border: solid 1px rgb(101, 101, 101);
+        padding: 15px 50px;
+        font-weight: bold;
+        color: rgb(91, 91, 91);
+    }
+
+    .boton_agregar:hover{
+        border: solid 1px rgb(26, 223, 0);
+        color: rgb(26, 223, 0);
+    }
+
+    .boton_eliminar{
+        border: solid 1px rgb(255, 0, 0);
+        padding: 15px 50px;
+        font-weight: bold;
+        color: rgb(255, 0, 0);
+        margin-bottom: 30px;
+    }
+
+    /*Lista de datos*/
+    .lista_datos{
+        padding-left: 30px;
+        padding-right: 30px;
+        text-align: center;
+        justify-content: center;
+    }
+
+
+    /*Footer*/
+
+    .footer {
+        background: #333;
+        text-align: center;
+    }
+
+    .footer {
+        width: 100%;
+    }
+
+    .footer .contenedor-footer {
+        background-color: #333;
+        padding: 15px 10px;
+        text-align: center;
+        color: white;
+    }
+
+    .footer .contenedor-footer small {
+        font-size: 15px;
+    }
+</style>
+
+</html>

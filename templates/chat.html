@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlazar el archivo de estilos CSS -->
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-box" id="chatBox">
+            <!-- Aquí se mostrarán los mensajes -->
+        </div>
+        <div class="input-container">
+            <input type="text" id="messageInput" placeholder="Escribe tu mensaje aquí...">
+                <button class="enviar" onclick="sendMessage()">Enviar</button>
+            <form action="{{url_for('salir')}}" method="post">
+                <button type="submit" class="salir">Salir</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script> <!-- Enlazar el archivo de scripts JavaScript -->
+</body>
+</html>
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+}
+
+.chat-container {
+    max-width: 400px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.chat-box {
+    height: 300px;
+    padding: 10px;
+    overflow-y: scroll;
+}
+
+.chat-box p {
+    margin: 5px 0;
+}
+
+input[type="text"] {
+    width: calc(100% - 70px);
+    padding: 10px;
+    border: none;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.enviar {
+    width: 70px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.salir {
+    width: 70px;
+    padding: 10px;
+    background-color: #b62424;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #fcfcfc;
+    color: black;
+}
+</style>
+
+<script>
+    function sendMessage() {
+    var messageInput = document.getElementById("messageInput");
+    var message = messageInput.value;
+    
+    if (message.trim() !== "") {
+        var chatBox = document.getElementById("chatBox");
+        var newMessage = document.createElement("p");
+        newMessage.textContent = "Tú: " + message;
+        chatBox.appendChild(newMessage);
+        chatBox.scrollTop = chatBox.scrollHeight; // Hacer scroll hasta el final
+        messageInput.value = ""; // Limpiar el campo de entrada
+    }
+}
+</script>
+
+<script>
+    // Función para enviar mensajes
+function sendMessage() {
+    var messageInput = document.getElementById("messageInput");
+    var message = messageInput.value.trim();
+    
+    if (message !== "") {
+        var chatBox = document.getElementById("chatBox");
+        var newMessage = document.createElement("p");
+        newMessage.textContent = "Tú: " + message;
+        chatBox.appendChild(newMessage);
+        chatBox.scrollTop = chatBox.scrollHeight; // Hacer scroll hasta el final
+        messageInput.value = ""; // Limpiar el campo de entrada
+
+        // Guardar el mensaje en el almacenamiento local
+        saveMessage(message);
+    }
+}
+
+// Función para guardar mensajes en el almacenamiento local
+function saveMessage(message) {
+    var storedMessages = localStorage.getItem("chatMessages");
+
+    if (storedMessages) {
+        // Si ya hay mensajes almacenados, agregar el nuevo mensaje
+        var messages = JSON.parse(storedMessages);
+        messages.push(message);
+        localStorage.setItem("chatMessages", JSON.stringify(messages));
+    } else {
+        // Si no hay mensajes almacenados, crear un nuevo arreglo con el mensaje
+        var messages = [message];
+        localStorage.setItem("chatMessages", JSON.stringify(messages));
+    }
+}
+
+// Función para cargar mensajes desde el almacenamiento local al cargar la página
+window.onload = function() {
+    var storedMessages = localStorage.getItem("chatMessages");
+
+    if (storedMessages) {
+        var messages = JSON.parse(storedMessages);
+        var chatBox = document.getElementById("chatBox");
+
+        messages.forEach(function(message) {
+            var newMessage = document.createElement("p");
+            newMessage.textContent = message;
+            chatBox.appendChild(newMessage);
+        });
+
+        chatBox.scrollTop = chatBox.scrollHeight; // Hacer scroll hasta el final
+    }
+};
+
+</script>
